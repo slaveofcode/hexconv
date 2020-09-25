@@ -125,7 +125,11 @@ func decimalToBinary(decimal float64) string {
 		} else {
 			res += strconv.Itoa(int(originSrc))
 		}
+	}
 
+	// auto add padding after, for 1 byte = 8 bits
+	for x := len(res); x < 8; x++ {
+		res += "0"
 	}
 
 	return reverseStr(res)
@@ -143,4 +147,17 @@ func main() {
 	fmt.Printf("ASCII: %08b \n", []byte("FFCCC0"))
 	fmt.Println("FFCCC0 to binary: ", decimalToBinary(hexToDecimal("FFCCC0")))
 
+	fmt.Print(hexToDecimal("FF"), hexToDecimal("F0"), hexToDecimal("0F"), hexToDecimal("11"))
+	fmt.Print(" = ")
+	fmt.Print(decimalToBinary(hexToDecimal("FF")), " ", decimalToBinary(hexToDecimal("F0")), " ", decimalToBinary(hexToDecimal("0F")), " ", decimalToBinary(hexToDecimal("11")), "\n")
+
+	fmt.Printf("Bitwise AND %08b \n", 0b10000001&0b10001001)
+	fmt.Printf("Bitwise OR %08b \n", 0b10000001|0b10001001)
+	fmt.Printf("Bitwise XOR %08b \n", 0b10000001^0b10001001)
+	fmt.Printf("Left shift %08b \n", 0b10000001>>2)
+	fmt.Printf("RIght shift %08b \n", 0b10000001<<2)
+
+	// see https://golang.org/pkg/fmt/ for more formatting output
+	fmt.Printf("source %08b %d \n", 0b10000001, 0b10000001)
+	fmt.Printf("shift left by 2 %10b %d \n", 0b10000001<<2, 0b10000001<<2)
 }
