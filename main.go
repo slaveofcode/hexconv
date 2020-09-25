@@ -153,7 +153,8 @@ func main() {
 
 	fmt.Printf("Bitwise AND %08b \n", 0b10000001&0b10001001)
 	fmt.Printf("Bitwise OR %08b \n", 0b10000001|0b10001001)
-	fmt.Printf("Bitwise XOR %08b \n", 0b10000001^0b10001001)
+	fmt.Printf("Bitwise XOR or NOT %08b \n", 0b10000001^0b10001001)
+	fmt.Printf("Bitwise AND NOT %08b \n", 0b10010001&^0b10000001) // same like doing AND operation and then NOT/XOR operation
 	fmt.Printf("Left shift %08b \n", 0b10000001>>2)
 	fmt.Printf("RIght shift %08b \n", 0b10000001<<2)
 
